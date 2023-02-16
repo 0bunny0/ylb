@@ -1,0 +1,3 @@
+# Project exclude paths
+/micro-api/target/
+/micro-commons/target/

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: micro-dataservice
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ylb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+
+#dubbo
+dubbo:
+  registry:
+    address: zookeeper://localhost:2181
+  scan:
+    base-packages: com.powernode
+  protocol:
+    name: dubbo
+  provider:
+    timeout: 50000
+    retries: 0
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:/mappers/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
