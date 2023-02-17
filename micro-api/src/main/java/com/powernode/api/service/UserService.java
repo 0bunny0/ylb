@@ -11,7 +11,7 @@ public interface UserService {
     User findUserByPhone(String phone);
 
     /**
-     * 注册
+     * 注册 用户 同时 开户
      * @param phone 手机号码
      * @param loginPassword 32位md5加密之后的密码
      * @return

@@ -6,14 +6,14 @@ package com.powernode.vo;
 public class UserParam {
 
     private String phone;
-    private String LoginPassword;
+    private String loginPassword;
     private String code;
 
     @Override
     public String toString() {
         return "UserParam{" +
                 "phone='" + phone + '\'' +
-                ", LoginPassword='" + LoginPassword + '\'' +
+                ", loginPassword='" + loginPassword + '\'' +
                 ", code='" + code + '\'' +
                 '}';
     }
@@ -27,11 +27,11 @@ public class UserParam {
     }
 
     public String getLoginPassword() {
-        return LoginPassword;
+        return loginPassword;
     }
 
     public void setLoginPassword(String loginPassword) {
-        LoginPassword = loginPassword;
+        this.loginPassword = loginPassword;
     }
 
     public String getCode() {

@@ -26,6 +26,6 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-#盐
+#盐  powernode 进行 md5 加密
 password:
   salt: 88cdef88bcdb8b2e33fb7b4f076cf803

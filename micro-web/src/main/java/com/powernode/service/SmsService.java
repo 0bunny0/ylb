@@ -3,6 +3,7 @@ package com.powernode.service;
 import com.alibaba.fastjson.JSONObject;
 import com.powernode.config.JDWXSmsConfig;
 import com.powernode.constants.RedisKey;
+import com.powernode.util.CommonUtil;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -35,6 +36,9 @@ public class SmsService {
      */
     public boolean checkCodeIsUse(String phone, String cmd) {
         /*省略 参数校验*/
+        if(!CommonUtil.checkPhone(phone)){
+            return false;
+        }
         /*根据不同的操作 判断 不用的验证码 是否存在redis*/
 
         String key = "";
@@ -129,7 +133,7 @@ public class SmsService {
      * @return
      */
     public boolean checkSmsCode(String phone,String code,String cmd){
-        /*根据操作 和手机号码,获取key, 通过key 去与验证码的值去与用户输入的验证码进行比较*/
+        /*根据操作 和手机号码,获取key, 通过key 去与验证码的值和用户输入的验证码进行比较*/
         String key = "";
         if ("reg".equals(cmd)) {
             key = RedisKey.SMS_REG_CODE + phone;

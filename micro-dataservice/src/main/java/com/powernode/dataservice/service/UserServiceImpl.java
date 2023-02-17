@@ -48,7 +48,8 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 注册
+     * 注册 用户 同时 开户
+     * 加盐 二次加密
      * @param phone         手机号码
      * @param loginPassword 32位md5加密之后的密码
      * @return
@@ -80,8 +81,6 @@ public class UserServiceImpl implements UserService {
         financeAccount.setUid(user.getId());
         financeAccount.setAvailableMoney(new BigDecimal("0"));
         financeAccountMapper.insertSelective(financeAccount);
-
-
 
         return user;
     }

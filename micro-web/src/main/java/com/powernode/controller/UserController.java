@@ -63,6 +63,7 @@ public class UserController {
                 ||userParam.getLoginPassword()==null
                 ||userParam.getLoginPassword().length()!=32
         ){
+            System.out.println("11111");
             result.setCodeEnum(Code.QUERY_PARAM_ERROR);
             return result;
         }
