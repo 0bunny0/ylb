@@ -17,3 +17,9 @@ dubbo:
     retries: 0
     check: false
 
+
+jdwx:
+  sms:
+    url: https://way.jd.com/chuangxin/dxjk
+    content: 【powernode】你的验证码是：%s，3分钟内有效！
+    appkey: 2f00342dfba6d00290d1c65c047d6778

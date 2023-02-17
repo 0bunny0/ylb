@@ -86,4 +86,12 @@ public class TestHttpClient {
             e.printStackTrace();
         }
     }
+
+    /*短信接口*/
+    @Test
+    public void testCode(){
+
+    }
+
+    /*实名验证接口*/
 }

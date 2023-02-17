@@ -28,7 +28,7 @@ public class Result {
     private List list;
 
     /*使用枚举值*/
-    private void setCodeEnum(Code codeEnum){
+    public void setCodeEnum(Code codeEnum){
         this.code = codeEnum.getCode();
         this.msg = codeEnum.getText();
     }

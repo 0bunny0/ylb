@@ -6,7 +6,13 @@ package com.powernode.common;
 public enum Code {
     /*根据响应场景 添加枚举类型*/
     SUCCESS(1000,"请求成功"),
-    FAILURE(9999,"请求失败,稍后重试")
+    FAILURE(9999,"请求失败,稍后重试"),
+    PHONE_FORMAT_ERROR(1001,"手机格式错误"),
+    PHONE_HAD_REGISTER(1002,"手机号码已被注册"),
+    QUERY_PARAM_ERROR(1003,"参数错误"),
+    SMS_CODE_EXISTS(1004,"验证码可以使用,无需再次获取"),
+    SMS_SEND_ERROR(1005,"短信发送失败"),
+    SMS_CODE_INVALIDATE(1006,"验证码输入错误")
     ;
 
     Code(Integer code, String text) {
