@@ -6,16 +6,16 @@ import com.powernode.api.service.UserService;
 import com.powernode.dataservice.mapper.FinanceAccountMapper;
 import com.powernode.dataservice.mapper.UserMapper;
 import com.powernode.util.CommonUtil;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@DubboService(interfaceClass = UserService.class,version = "1.0.0")
+@DubboService(interfaceClass = UserService.class, version = "1.0.0")
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 通过手机号码获取用户对象
+     *
      * @param phone 手机号码
      * @return
      */
@@ -36,7 +37,7 @@ public class UserServiceImpl implements UserService {
     public User findUserByPhone(String phone) {
         User user = null;
         /*1 校验数据*/
-        if(!CommonUtil.checkPhone(phone)){
+        if (!CommonUtil.checkPhone(phone)) {
             return user;
         }
 
@@ -50,6 +51,7 @@ public class UserServiceImpl implements UserService {
     /**
      * 注册 用户 同时 开户
      * 加盐 二次加密
+     *
      * @param phone         手机号码
      * @param loginPassword 32位md5加密之后的密码
      * @return
@@ -58,15 +60,15 @@ public class UserServiceImpl implements UserService {
     @Transactional(rollbackFor = Exception.class)  //写多行数据时。有异常则回滚
     public User userRegister(String phone, String loginPassword) {
         User user = null;
-        if(!CommonUtil.checkPhone(phone)
-            ||loginPassword==null
-            ||loginPassword.length()!=32
-        ){
+        if (!CommonUtil.checkPhone(phone)
+                || loginPassword == null
+                || loginPassword.length() != 32
+        ) {
             return user;
         }
 
         /*加盐*/
-        loginPassword = loginPassword+passwordSalt;
+        loginPassword = loginPassword + passwordSalt;
         /*md5 加密*/
         loginPassword = DigestUtils.md5Hex(loginPassword);
 
@@ -82,6 +84,24 @@ public class UserServiceImpl implements UserService {
         financeAccount.setAvailableMoney(new BigDecimal("0"));
         financeAccountMapper.insertSelective(financeAccount);
 
+        return user;
+    }
+
+    @Override
+    public User userLogin(String phone, String loginPassword) {
+        User user = null;
+        if (!CommonUtil.checkPhone(phone)
+                || loginPassword == null
+                || loginPassword.length() != 32
+        ) {
+            return user;
+        }
+        /*加盐*/
+        loginPassword = loginPassword + passwordSalt;
+        /*md5加密*/
+        loginPassword = DigestUtils.md5Hex(loginPassword);
+        /*通过账号密码 查询数据库*/
+        user = userMapper.selectLogin(phone, loginPassword);
         return user;
     }
 }

@@ -27,6 +27,17 @@ public class Result {
     @ApiModelProperty(value = "集合数据")
     private List list;
 
+    /*储存token*/
+    private String accessToken;
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
     /*使用枚举值*/
     public void setCodeEnum(Code codeEnum){
         this.code = codeEnum.getCode();
@@ -47,6 +58,7 @@ public class Result {
         return result;
     }
 
+
     @Override
     public String toString() {
         return "Result{" +
@@ -54,6 +66,7 @@ public class Result {
                 ", msg='" + msg + '\'' +
                 ", object=" + object +
                 ", list=" + list +
+                ", accessToken='" + accessToken + '\'' +
                 '}';
     }
 

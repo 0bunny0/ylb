@@ -23,3 +23,16 @@ jdwx:
     url: https://way.jd.com/chuangxin/dxjk
     content: 【powernode】你的验证码是：%s，3分钟内有效！
     appkey: 2f00342dfba6d00290d1c65c047d6778
+
+#大于等于 256bit
+token:
+  secretKey:
+    88cdef88bcdb8b2e33fb7b4f076cf803
+
+#登录拦截的拦截路径 过滤路径
+interceptor:
+  login:
+    addPath:
+      - /v1/user/info
+    excludePath:
+      - /v1/user/test

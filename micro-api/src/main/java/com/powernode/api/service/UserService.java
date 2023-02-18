@@ -17,4 +17,6 @@ public interface UserService {
      * @return
      */
     User userRegister(String phone, String loginPassword);
+
+    User userLogin(String phone, String loginPassword);
 }

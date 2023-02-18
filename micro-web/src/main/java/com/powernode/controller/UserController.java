@@ -6,13 +6,14 @@ import com.powernode.common.Code;
 import com.powernode.resp.Result;
 import com.powernode.service.SmsService;
 import com.powernode.util.CommonUtil;
+import com.powernode.util.TokenUtil;
 import com.powernode.vo.UserParam;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户api接口
@@ -23,8 +24,12 @@ public class UserController {
     @DubboReference(interfaceClass = UserService.class,version = "1.0.0")
     private UserService userService;
 
+
     @Autowired
     private SmsService smsService;
+
+    @Autowired
+    private TokenUtil tokenUtil;
 
 
     /*手机号码是否已注册*/
@@ -93,5 +98,71 @@ public class UserController {
         /*响应*/
         return result;
 
+    }
+
+
+    /*登录 单点登录*/
+    @PostMapping("/v1/token/accessToken")
+    public Result accessToken(@RequestBody UserParam userParam){
+        Result result = Result.FAIL();
+        /*验证参数*/
+        if(!CommonUtil.checkPhone(userParam.getPhone())
+                ||userParam.getCode()==null
+                ||userParam.getCode().length()!=6
+                ||userParam.getLoginPassword()==null
+                ||userParam.getLoginPassword().length()!=32
+        ){
+            result.setCodeEnum(Code.QUERY_PARAM_ERROR);
+            return result;
+        }
+
+        /*验证验证码是否正确*/
+        boolean checkResult = smsService.checkSmsCode(userParam.getPhone(), userParam.getCode(), "login");
+        if(!checkResult){
+            result.setCodeEnum(Code.SMS_CODE_INVALIDATE);
+            return result;
+        }
+
+        /*3 登录验证*/
+        User user = userService.userLogin(userParam.getPhone(),userParam.getLoginPassword());
+        if(user==null){
+            result.setCodeEnum(Code.SMS_LOGIN_ERROR);
+            return result;
+        }
+        /*基于session认证: 往session区间存入user对象
+        基于token认证: 认证成功后 响应给客户端一个jwt
+        * */
+
+        /*4 生成token*/
+        Map<String,Object> payLoad = new HashMap<>();
+        payLoad.put("uid",user.getId());
+        payLoad.put("name",user.getName());
+        String jwt = tokenUtil.createJwt(payLoad,120);
+
+
+        /*5 封装数据响应结果*/
+        //先创建对象 再去赋值
+        result = Result.SUCCESS();
+        result.setAccessToken(jwt);
+
+        /*补充前端 需要储存的数据*/
+        Map<String,Object> userView = new HashMap<>();
+        userView.put("uid",user.getId());
+        userView.put("name",user.getName());
+        userView.put("phone",user.getPhone());
+        result.setObject(userView);
+
+        return result;
+    }
+
+    @PostMapping("/v1/user/info")
+    public Result userInfo(){
+        Result result = Result.SUCCESS();
+
+        /*业务逻辑*/
+
+        /*从request*/
+
+        return result;
     }
 }

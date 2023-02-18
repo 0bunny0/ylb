@@ -136,9 +136,19 @@
     where phone=#{phone}
   </select>
 
-<!--  添加用户信息 返回新增-->
+  <!--
+ 添加用户信息，返回新增信息的id 赋值给  user.id
+                                                           表 id字段        user对象的 id属性
+ -->
   <insert id="insertUserReturnId" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
     insert into u_user(phone,login_password,add_time)
     values(#{phone},#{loginPassword},#{addTime})
   </insert>
+
+<!--  通过账号密码 获取用户信息-->
+  <select id="selectLogin" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from u_user
+    where phone=#{phone} and login_password=#{loginPassword}
+  </select>
 </mapper>

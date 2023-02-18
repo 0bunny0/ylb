@@ -12,7 +12,9 @@ public enum Code {
     QUERY_PARAM_ERROR(1003,"参数错误"),
     SMS_CODE_EXISTS(1004,"验证码可以使用,无需再次获取"),
     SMS_SEND_ERROR(1005,"短信发送失败"),
-    SMS_CODE_INVALIDATE(1006,"验证码输入错误")
+    SMS_CODE_INVALIDATE(1006,"验证码输入错误"),
+    SMS_LOGIN_ERROR(1007,"账号密码错误"),
+    TOKEN_INVALIDATE(4003,"访问失败")
     ;
 
     Code(Integer code, String text) {

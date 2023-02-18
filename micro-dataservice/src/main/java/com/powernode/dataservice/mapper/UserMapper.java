@@ -33,4 +33,6 @@ public interface UserMapper {
      * @param user
      */
     int insertUserReturnId(User user);
+
+    User selectLogin(String phone, String loginPassword);
 }
