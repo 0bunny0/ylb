@@ -10,4 +10,7 @@ public class RedisKey {
     public static final String SMS_REG_CODE = "SMS:REG:";
     public static final String SMS_LOGIN_CODE = "SMS:LOGIN:";
     public static final String SMS_REALNAME_CODE = "SMS:REALNAME:";
+
+    /*token*/
+    public static final String TOKEN_KEY = "TOKEN_KEY:";
 }

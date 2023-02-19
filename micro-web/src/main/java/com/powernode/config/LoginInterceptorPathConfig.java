@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 @Component
 @ConfigurationProperties(prefix = "interceptor.login")
-public class LoginIntercerptorPathConfig {
+public class LoginInterceptorPathConfig {
     private String[] addPath;
     private String[] excludePath;
 

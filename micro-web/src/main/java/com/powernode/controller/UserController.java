@@ -3,6 +3,7 @@ package com.powernode.controller;
 import com.powernode.api.model.User;
 import com.powernode.api.service.UserService;
 import com.powernode.common.Code;
+import com.powernode.constants.RedisKey;
 import com.powernode.resp.Result;
 import com.powernode.service.SmsService;
 import com.powernode.util.CommonUtil;
@@ -10,10 +11,13 @@ import com.powernode.util.TokenUtil;
 import com.powernode.vo.UserParam;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.BoundValueOperations;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
-
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 用户api接口
@@ -30,6 +34,9 @@ public class UserController {
 
     @Autowired
     private TokenUtil tokenUtil;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
 
     /*手机号码是否已注册*/
@@ -152,17 +159,25 @@ public class UserController {
         userView.put("phone",user.getPhone());
         result.setObject(userView);
 
+        /*将token 存入redis 用户 登出（实现从无状态变成有状态）*/
+        BoundValueOperations<String,String> boundValueOps = stringRedisTemplate.boundValueOps(RedisKey.TOKEN_KEY+jwt);
+        boundValueOps.set(jwt,2, TimeUnit.HOURS);
+
         return result;
     }
 
     @PostMapping("/v1/user/info")
-    public Result userInfo(){
+    public Result userInfo(HttpServletRequest request){
         Result result = Result.SUCCESS();
 
         /*业务逻辑*/
+        /*从request区间获取 拦截器传递的参数 tokenUid*/
+        Integer uid = Integer.parseInt(request.getAttribute("uid").toString());
 
-        /*从request*/
+        /*通过token中的 uid 访问数据服务*/
 
         return result;
     }
+
+
 }
