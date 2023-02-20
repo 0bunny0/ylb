@@ -12,6 +12,10 @@ public class YLBConstants {
     /*产品状态*/
     public static final Integer PRODUCT_STATUS_NOTFULL = 0; //未满标
     public static final Integer PRODUCT_STATUS_FULL = 1;    //已满标
-    public static final Integer PRODUCT_STATUS_PLAN = 2;    //
+    public static final Integer PRODUCT_STATUS_PLAN = 2;    //满标且已生成收益计划
+
+    /*订单状态*/
+    public static final Integer BID_STATUS_SUCCESS = 1;
+    public static final Integer BID_STATUS_FAILURE = 2;
 
 }

@@ -10,6 +10,7 @@ import com.powernode.resp.Result;
 import com.powernode.service.SmsService;
 import com.powernode.util.CommonUtil;
 import com.powernode.util.TokenUtil;
+import com.powernode.vo.UserInfo;
 import com.powernode.vo.UserParam;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,8 @@ public class UserController {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-//    @Autowired
-//    private FinanceAccountService financeAccountService;
+    @DubboReference(interfaceClass = FinanceAccountService.class,version = "1.0.0")
+    private FinanceAccountService financeAccountService;
 
 
     /*手机号码是否已注册*/
@@ -189,7 +190,7 @@ public class UserController {
 
     @PostMapping("/v1/user/info")
     public Result userInfo(HttpServletRequest request){
-        Result result = Result.SUCCESS();
+        Result result = Result.FAIL();
 
         /*业务逻辑*/
         /*从request区间获取 拦截器传递的参数 tokenUid*/
@@ -198,14 +199,16 @@ public class UserController {
         /*通过token中的 uid 访问数据服务*/
         User user = userService.findUserById(uid);
 
-        //FinanceAccount financeAccount = financeAccountService.queryByUid(uid);
+        /*获取用户账户余额*/
+        FinanceAccount financeAccount = financeAccountService.queryByUid(uid);
 
-//        UserInfo userInfo = new UserInfo();
-//        userInfo.setName(user.getName());
-//        userInfo.setAccountMoney(financeAccount.getAvailableMoney());
-//
-//        result = Result.SUCCESS();
-//        result.setObject(userInfo);
+        /* 提取前端需要的数据 封装到 数据模型中 */
+        UserInfo userInfo = new UserInfo();
+        userInfo.setName(user.getName());
+        userInfo.setAccountMoney(financeAccount.getAvailableMoney());
+
+        result = Result.SUCCESS();
+        result.setObject(userInfo);
 
         return result;
     }

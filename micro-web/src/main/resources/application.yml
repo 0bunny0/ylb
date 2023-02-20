@@ -34,5 +34,6 @@ interceptor:
   login:
     addPath:
       - /v1/user/info
+      - /v1/product/invest
     excludePath:
       - /v1/user/test

@@ -114,9 +114,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserById(Integer uid) {
         /*参数验证*/
+
         User user = null;
+        if(uid ==null || uid < 1){
+            return user;
+        }
 
-
-        return user;
+        return userMapper.selectByPrimaryKey(uid);
     }
 }

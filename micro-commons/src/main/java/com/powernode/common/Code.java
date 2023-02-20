@@ -7,6 +7,7 @@ public enum Code {
     /*根据响应场景 添加枚举类型*/
     SUCCESS(1000,"请求成功"),
     FAILURE(9999,"请求失败,稍后重试"),
+    SERVER_RESPONESE_ERROR(5000,"服务器响应异常"),
     PHONE_FORMAT_ERROR(1001,"手机格式错误"),
     PHONE_HAD_REGISTER(1002,"手机号码已被注册"),
     QUERY_PARAM_ERROR(1003,"参数错误"),
@@ -15,7 +16,7 @@ public enum Code {
     SMS_CODE_INVALIDATE(1006,"验证码输入错误"),
     SMS_LOGIN_ERROR(1007,"账号密码错误"),
     TOKEN_INVALIDATE(4003,"访问失败"),
-    PRODUCT_INVEST_ERROR(1010,"投资失败")
+    PRODUCT_INVEST_ERROR(1008,"投资失败")
     ;
 
     Code(Integer code, String text) {

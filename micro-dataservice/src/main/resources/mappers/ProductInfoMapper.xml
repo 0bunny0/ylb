@@ -203,7 +203,7 @@
     select ROUND(AVG(rate),2) from b_product_info
   </select>
 
-<!--  -->
+
   <select id="selectPageByType" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include>
     from b_product_info
@@ -211,4 +211,21 @@
     order by release_time desc
     limit #{index},#{rows}
   </select>
+
+  <select id="selectByIdForUpdate" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from b_product_info
+    where id=#{productId} for update
+  </select>
+
+  <update id="reduceProductLeftMoney">
+    update b_product_info set left_product_money=left_product_money-#{bidMoney}
+    where id=#{productId} and (left_product_money-#{bidMoney})>=0
+  </update>
+
+  <update id="updateFullTimeStatus">
+    update b_product_info set product_status=1,product_full_time=#{date}
+    where id = #{productId}
+  </update>
+
 </mapper>
