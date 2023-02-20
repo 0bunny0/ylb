@@ -107,4 +107,19 @@
   <select id="selectSumBid" resultType="java.math.BigDecimal">
       select sum(bid_money) from b_bid_info
   </select>
+
+  <resultMap id="PhoneBidInfoMap" type="com.powernode.api.pojo.PhoneBidInfo">
+    <id column="id" jdbcType="INTEGER" property="id"></id>
+    <result column="bid_money" jdbcType="DECIMAL" property="bidMoney" />
+    <result column="bid_time" jdbcType="TIMESTAMP" property="bidTime" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+
+  <select id="selectBidByProductId" resultMap="PhoneBidInfoMap">
+    select bid.id,bid.bid_money,bid.bid_time,u.phone from b_bid_info as bid
+    inner join u_user as u on bid.uid=u.id
+    where prod_id=#{pid} and bid_status = 1
+    order by bid_time desc
+    limit #{index},#{pageSize}
+  </select>
 </mapper>

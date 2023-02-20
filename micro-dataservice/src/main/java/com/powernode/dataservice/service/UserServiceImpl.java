@@ -104,4 +104,19 @@ public class UserServiceImpl implements UserService {
         user = userMapper.selectLogin(phone, loginPassword);
         return user;
     }
+
+    /**
+     * 通过 用户id 获取 用户信息
+     *
+     * @param uid
+     * @return
+     */
+    @Override
+    public User findUserById(Integer uid) {
+        /*参数验证*/
+        User user = null;
+
+
+        return user;
+    }
 }

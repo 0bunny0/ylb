@@ -29,4 +29,6 @@ public class BaseInfoServiceImpl implements BaseInfoService {
 
         return baseInfo;
     }
+
+
 }

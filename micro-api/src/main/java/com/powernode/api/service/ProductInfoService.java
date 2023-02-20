@@ -1,5 +1,6 @@
 package com.powernode.api.service;
 
+import com.powernode.api.model.ProductInfo;
 import com.powernode.api.pojo.ProductData;
 
 /**
@@ -7,4 +8,6 @@ import com.powernode.api.pojo.ProductData;
  */
 public interface ProductInfoService {
     ProductData queryIndexProductList();
+
+    ProductInfo queryById(Integer pid);
 }

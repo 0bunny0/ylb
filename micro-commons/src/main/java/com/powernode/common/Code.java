@@ -14,7 +14,8 @@ public enum Code {
     SMS_SEND_ERROR(1005,"短信发送失败"),
     SMS_CODE_INVALIDATE(1006,"验证码输入错误"),
     SMS_LOGIN_ERROR(1007,"账号密码错误"),
-    TOKEN_INVALIDATE(4003,"访问失败")
+    TOKEN_INVALIDATE(4003,"访问失败"),
+    PRODUCT_INVEST_ERROR(1010,"投资失败")
     ;
 
     Code(Integer code, String text) {

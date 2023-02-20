@@ -1,6 +1,7 @@
 package com.powernode.dataservice.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.powernode.api.model.ProductInfo;
 import com.powernode.api.pojo.ProductData;
 import com.powernode.api.service.ProductInfoService;
 import com.powernode.constants.RedisKey;
@@ -82,5 +83,18 @@ public class ProductInfoServiceImpl implements ProductInfoService {
         }
 
         return productData;
+    }
+
+    @Override
+    public ProductInfo queryById(Integer pid) {
+        ProductInfo productInfo = null;
+
+        if(pid == null || pid < 1){
+            return productInfo;
+        }
+
+        productInfo = productInfoMapper.selectByPrimaryKey(pid);
+
+        return productInfo;
     }
 }

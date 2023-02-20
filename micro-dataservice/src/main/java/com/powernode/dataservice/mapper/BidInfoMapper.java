@@ -1,8 +1,10 @@
 package com.powernode.dataservice.mapper;
 
 import com.powernode.api.model.BidInfo;
+import com.powernode.api.pojo.PhoneBidInfo;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface BidInfoMapper {
     int deleteByPrimaryKey(Integer id);
@@ -18,4 +20,6 @@ public interface BidInfoMapper {
     int updateByPrimaryKey(BidInfo record);
 
     BigDecimal selectSumBid();
+
+    List<PhoneBidInfo> selectBidByProductId(Integer pid, int index, int pageSize);
 }

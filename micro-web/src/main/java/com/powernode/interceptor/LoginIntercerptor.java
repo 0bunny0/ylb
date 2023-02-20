@@ -67,7 +67,7 @@ public class LoginIntercerptor implements HandlerInterceptor {
         /*redis中是否存在token对应的key 用户是否登出*/
         Boolean hasKey = stringRedisTemplate.hasKey(RedisKey.TOKEN_KEY+token);
         if(!hasKey){
-            System.out.println("用户非法");
+            System.out.println("用户已登出");
             response.getWriter().write(json);
             response.getWriter().flush();
             return false;

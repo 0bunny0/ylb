@@ -19,4 +19,11 @@ public interface UserService {
     User userRegister(String phone, String loginPassword);
 
     User userLogin(String phone, String loginPassword);
+
+    /**
+     * 通过 用户id 获取 用户信息
+     * @param uid
+     * @return
+     */
+    User findUserById(Integer uid);
 }

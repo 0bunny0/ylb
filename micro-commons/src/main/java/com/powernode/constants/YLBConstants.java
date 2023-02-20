@@ -9,4 +9,9 @@ public class YLBConstants {
     public static final Integer PRODUCT_TYPE_YOUXUAN = 1; //优选
     public static final Integer PRODUCT_TYPE_SANBIAO = 2; //散标
 
+    /*产品状态*/
+    public static final Integer PRODUCT_STATUS_NOTFULL = 0; //未满标
+    public static final Integer PRODUCT_STATUS_FULL = 1;    //已满标
+    public static final Integer PRODUCT_STATUS_PLAN = 2;    //
+
 }

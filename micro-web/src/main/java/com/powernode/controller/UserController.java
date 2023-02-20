@@ -1,6 +1,8 @@
 package com.powernode.controller;
 
+import com.powernode.api.model.FinanceAccount;
 import com.powernode.api.model.User;
+import com.powernode.api.service.FinanceAccountService;
 import com.powernode.api.service.UserService;
 import com.powernode.common.Code;
 import com.powernode.constants.RedisKey;
@@ -37,6 +39,9 @@ public class UserController {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+//    @Autowired
+//    private FinanceAccountService financeAccountService;
 
 
     /*手机号码是否已注册*/
@@ -166,6 +171,22 @@ public class UserController {
         return result;
     }
 
+    /*登出: 将redis中的token删除*/
+    @PostMapping("/v1/user/logout")
+    public Result logout(HttpServletRequest request){
+        Result result = Result.SUCCESS();
+
+        /*从请求头中获取token*/
+        String authorization = request.getHeader("Authorization");
+        String token = authorization.substring(7);
+
+        /*删除token*/
+        stringRedisTemplate.delete(RedisKey.TOKEN_KEY+token);
+
+        return result;
+    }
+
+
     @PostMapping("/v1/user/info")
     public Result userInfo(HttpServletRequest request){
         Result result = Result.SUCCESS();
@@ -175,6 +196,16 @@ public class UserController {
         Integer uid = Integer.parseInt(request.getAttribute("uid").toString());
 
         /*通过token中的 uid 访问数据服务*/
+        User user = userService.findUserById(uid);
+
+        //FinanceAccount financeAccount = financeAccountService.queryByUid(uid);
+
+//        UserInfo userInfo = new UserInfo();
+//        userInfo.setName(user.getName());
+//        userInfo.setAccountMoney(financeAccount.getAvailableMoney());
+//
+//        result = Result.SUCCESS();
+//        result.setObject(userInfo);
 
         return result;
     }
