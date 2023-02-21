@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/micro-web/pom.xml" />
         <option value="$PROJECT_DIR$/micro-api/pom.xml" />
         <option value="$PROJECT_DIR$/micro-commons/pom.xml" />
+        <option value="$PROJECT_DIR$/micro-task/pom.xml" />
       </list>
     </option>
   </component>

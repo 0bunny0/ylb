@@ -10,6 +10,7 @@
         <module name="micro-api" />
         <module name="micro-dataservice" />
         <module name="micro-commons" />
+        <module name="micro-task" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +20,7 @@
       <module name="micro-mybaits-generator" target="1.8" />
       <module name="micro-mybatis-generator" target="1.8" />
       <module name="micro-parent" target="1.8" />
+      <module name="micro-task" target="1.8" />
       <module name="micro-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -27,6 +29,7 @@
       <module name="micro-commons" options="-parameters" />
       <module name="micro-dataservice" options="-parameters" />
       <module name="micro-parent" options="-parameters" />
+      <module name="micro-task" options="-parameters" />
       <module name="micro-web" options="-parameters" />
     </option>
   </component>

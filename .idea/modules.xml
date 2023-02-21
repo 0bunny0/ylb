@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/micro-commons/micro-commons.iml" filepath="$PROJECT_DIR$/micro-commons/micro-commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/micro-dataservice/micro-dataservice.iml" filepath="$PROJECT_DIR$/micro-dataservice/micro-dataservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/micro-parent/micro-parent.iml" filepath="$PROJECT_DIR$/micro-parent/micro-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micro-task/micro-task.iml" filepath="$PROJECT_DIR$/micro-task/micro-task.iml" />
       <module fileurl="file://$PROJECT_DIR$/micro-web/micro-web.iml" filepath="$PROJECT_DIR$/micro-web/micro-web.iml" />
     </modules>
   </component>

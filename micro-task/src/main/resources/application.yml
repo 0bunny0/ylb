@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: micro-task
+
+
+dubbo:
+  registry:
+    address: zookeeper://localhost:2181
+  scan:
+    base-packages: com.powernode
+  consumer:
+    timeout: 50000
+    retries: 0
+    check: false
+
