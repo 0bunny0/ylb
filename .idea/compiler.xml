@@ -11,9 +11,11 @@
         <module name="micro-dataservice" />
         <module name="micro-commons" />
         <module name="micro-task" />
+        <module name="kuaiqian-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="kuaiqian-demo" target="1.8" />
       <module name="micro-api" target="1.8" />
       <module name="micro-commons" target="1.8" />
       <module name="micro-dataservice" target="1.8" />

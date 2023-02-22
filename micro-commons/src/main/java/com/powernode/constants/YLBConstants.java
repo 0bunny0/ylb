@@ -18,4 +18,8 @@ public class YLBConstants {
     public static final Integer BID_STATUS_SUCCESS = 1;
     public static final Integer BID_STATUS_FAILURE = 2;
 
+    /*收益状态*/
+    public static final Integer INCOME_STATUS_PLAN = 0; //收益计划 正在收益中
+    public static final Integer INCOME_STATUS_BACK = 1; //完成计划 已返还本息
+
 }

@@ -19,7 +19,18 @@ public interface BidInfoMapper {
 
     int updateByPrimaryKey(BidInfo record);
 
+    /**
+     * 获取 总交易金额
+     * @return
+     */
     BigDecimal selectSumBid();
 
     List<PhoneBidInfo> selectBidByProductId(Integer pid, int index, int pageSize);
+
+    /**
+     * 根据产品id 获取所有投资记录
+     * @param pid
+     * @return
+     */
+    List<BidInfo> selectByProductId(Integer pid);
 }

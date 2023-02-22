@@ -109,7 +109,7 @@
   </select>
 
   <resultMap id="PhoneBidInfoMap" type="com.powernode.api.pojo.PhoneBidInfo">
-    <id column="id" jdbcType="INTEGER" property="id"></id>
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="bid_money" jdbcType="DECIMAL" property="bidMoney" />
     <result column="bid_time" jdbcType="TIMESTAMP" property="bidTime" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
@@ -121,5 +121,12 @@
     where prod_id=#{pid} and bid_status = 1
     order by bid_time desc
     limit #{index},#{pageSize}
+  </select>
+
+  <select id="selectByProductId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from b_bid_info
+    where prod_id =#{pid} and bid_status=1
+    order by id
   </select>
 </mapper>

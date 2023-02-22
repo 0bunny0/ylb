@@ -228,4 +228,19 @@
     where id = #{productId}
   </update>
 
+  <select id="selectFullProduct" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from b_product_info
+    where product_status = 1
+    and product_full_time>=#{startDate}
+    and product_full_time &lt; #{endDate}
+    order by id;
+  </select>
+
+  <update id="updateStatus">
+    update b_product_info
+    set product_status=#{status}
+    where id=#{id}
+  </update>
+
 </mapper>

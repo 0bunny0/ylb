@@ -57,4 +57,20 @@ public interface ProductInfoMapper {
      * @return
      */
     int updateFullTimeStatus(Integer productId, Date date);
+
+    /**
+     * 获取昨天时间范围内的 满标产品
+     * @param startDate 开始时间
+     * @param endDate   结束时间
+     * @return
+     */
+    List<ProductInfo> selectFullProduct(Date startDate, Date endDate);
+
+    /**
+     * 更改某个产品的 状态
+     * @param id
+     * @param status
+     * @return
+     */
+    int updateStatus(Integer id, Integer status);
 }

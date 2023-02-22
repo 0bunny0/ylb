@@ -24,7 +24,7 @@ public class InvestController {
         Result result = Result.FAIL();
 
 //        数据校验
-        if(bidInfo==null
+        if(bidInfo.getUid()==null
                 ||bidInfo.getUid()<1
                 ||bidInfo.getProductId()==null
                 ||bidInfo.getProductId()<1
