@@ -10,7 +10,6 @@
       <module fileurl="file://$PROJECT_DIR$/micro-pay/micro-pay.iml" filepath="$PROJECT_DIR$/micro-pay/micro-pay.iml" />
       <module fileurl="file://$PROJECT_DIR$/micro-task/micro-task.iml" filepath="$PROJECT_DIR$/micro-task/micro-task.iml" />
       <module fileurl="file://$PROJECT_DIR$/micro-web/micro-web.iml" filepath="$PROJECT_DIR$/micro-web/micro-web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/micro-pay/.mvn/wrapper/wrapper.iml" filepath="$PROJECT_DIR$/micro-pay/.mvn/wrapper/wrapper.iml" />
     </modules>
   </component>
 </project>
