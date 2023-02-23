@@ -243,4 +243,12 @@
     where id=#{id}
   </update>
 
+  <select id="selectExpireProduct" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from b_product_info
+    where product_status = 1
+
+    order by id;
+  </select>
+
 </mapper>

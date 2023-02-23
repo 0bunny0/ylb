@@ -16,7 +16,8 @@ public class MicroTaskApplication {
         ApplicationContext context = SpringApplication.run(MicroTaskApplication.class, args);
         /*从容器中获取bean*/
         TaskManager manager = context.getBean(TaskManager.class);
-        manager.generatorIncomePlan();
+        //manager.generatorIncomePlan();
+        //manager.completeIncomePlan();
     }
 
 }

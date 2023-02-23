@@ -126,4 +126,16 @@
       channel = #{channel,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByRechargeNo" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from b_recharge_record
+    where recharge_no = #{orderId}
+  </select>
+
+  <update id="updateStatus">
+    update b_recharge_record
+    set recharge_status = #{status}
+    where recharge_no=#{orderId}
+  </update>
 </mapper>

@@ -3,6 +3,7 @@ package com.powernode.dataservice.mapper;
 import com.powernode.api.model.FinanceAccount;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 public interface FinanceAccountMapper {
     int deleteByPrimaryKey(Integer id);
@@ -38,4 +39,19 @@ public interface FinanceAccountMapper {
      * @return
      */
     int reduceAvailableMoney(Integer uid, BigDecimal bidMoney);
+
+    /**
+     * 通过收益表的 uid bid_money income_money 去修改 某用户的 账户 余额
+     * @param params
+     * @return
+     */
+    int updateFinanceAccountIncome(Map<String, Object> params);
+
+    /**
+     * 给指定用户增加余额
+     * @param uid
+     * @param rechargeMoney
+     * @return
+     */
+    int updateAvailableMoneyByRecharge(Integer uid, BigDecimal rechargeMoney);
 }

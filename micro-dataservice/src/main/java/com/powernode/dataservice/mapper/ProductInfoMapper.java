@@ -73,4 +73,6 @@ public interface ProductInfoMapper {
      * @return
      */
     int updateStatus(Integer id, Integer status);
+
+
 }

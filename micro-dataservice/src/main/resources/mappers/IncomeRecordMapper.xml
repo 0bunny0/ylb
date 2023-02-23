@@ -125,4 +125,13 @@
       income_status = #{incomeStatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="selectExpireIncomeRecordList" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from b_income_record
+    where income_status = 0
+    and income_date = CURRENT_DATE
+  </select>
+
 </mapper>

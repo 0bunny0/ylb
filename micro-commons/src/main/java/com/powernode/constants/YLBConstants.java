@@ -22,4 +22,8 @@ public class YLBConstants {
     public static final Integer INCOME_STATUS_PLAN = 0; //收益计划 正在收益中
     public static final Integer INCOME_STATUS_BACK = 1; //完成计划 已返还本息
 
+    /*充值记录状态*/
+    public static final Integer RECHARGE_ING = 0;//充值中
+    public static final Integer RECHARGE_SUCCESS = 1;//充值成功
+    public static final Integer RECHARGE_FAILURE = 2;//充值失败
 }

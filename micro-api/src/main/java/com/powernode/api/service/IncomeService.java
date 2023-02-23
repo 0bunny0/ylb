@@ -5,4 +5,6 @@ package com.powernode.api.service;
  */
 public interface IncomeService {
     void generatorIncomePlan();
+
+    void completeIncomePlan();
 }

@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="micro-web" />
         <module name="micro-api" />
         <module name="micro-dataservice" />
-        <module name="micro-commons" />
         <module name="micro-task" />
+        <module name="micro-web" />
+        <module name="micro-commons" />
+        <module name="micro-pay" />
         <module name="kuaiqian-demo" />
       </profile>
     </annotationProcessing>
@@ -22,6 +23,7 @@
       <module name="micro-mybaits-generator" target="1.8" />
       <module name="micro-mybatis-generator" target="1.8" />
       <module name="micro-parent" target="1.8" />
+      <module name="micro-pay" target="1.8" />
       <module name="micro-task" target="1.8" />
       <module name="micro-web" target="1.8" />
     </bytecodeTargetLevel>
@@ -31,6 +33,7 @@
       <module name="micro-commons" options="-parameters" />
       <module name="micro-dataservice" options="-parameters" />
       <module name="micro-parent" options="-parameters" />
+      <module name="micro-pay" options="-parameters" />
       <module name="micro-task" options="-parameters" />
       <module name="micro-web" options="-parameters" />
     </option>

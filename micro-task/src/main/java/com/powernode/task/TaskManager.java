@@ -40,6 +40,9 @@ public class TaskManager {
     通过收益表的 uid  去修改 某用户的 账户 余额  余额 = 余额 + 本息
     修改收益的 状态 为 1
      */
-
+    @Scheduled(cron = "0 0 8 * * ?")
+    public void completeIncomePlan(){
+        incomeService.completeIncomePlan();
+    }
 
 }
