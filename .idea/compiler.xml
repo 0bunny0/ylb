@@ -14,6 +14,12 @@
         <module name="micro-pay" />
         <module name="kuaiqian-demo" />
       </profile>
+      <profile name="Annotation profile for Unknown" enabled="true">
+        <sourceOutputDir name="../../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="wrapper" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="kuaiqian-demo" target="1.8" />
@@ -26,6 +32,7 @@
       <module name="micro-pay" target="1.8" />
       <module name="micro-task" target="1.8" />
       <module name="micro-web" target="1.8" />
+      <module name="wrapper" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
