@@ -28,7 +28,7 @@ public class KuaiQianService {
         //接收支付结果的页面地址，该参数一般置为空即可。
         String pageUrl = "";
         //服务器接收支付结果的后台地址，该参数务必填写，不能为空。
-        String bgUrl = "http://192.168.0.102:9000/pay/kq/notify";//使用 内网穿透 实现 快钱访问商家服务器
+        String bgUrl = "https://3ld4027775.yicp.fun/pay/kq/notify";//使用 内网穿透 实现 快钱访问商家服务器
         /*使用内网穿透技术 代理接口*/
 //        String bgUrl = "https://5544uo6907.oicp.vip/pay/kq/notify";
         //网关版本，固定值：v2.0,该参数必填。

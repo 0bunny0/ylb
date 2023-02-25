@@ -78,7 +78,7 @@ public class Pkipair {
             System.out.println(flag);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             System.out.println("no");
         }
         return flag;
