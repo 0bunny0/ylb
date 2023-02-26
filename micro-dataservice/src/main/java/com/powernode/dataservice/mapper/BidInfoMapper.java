@@ -33,4 +33,10 @@ public interface BidInfoMapper {
      * @return
      */
     List<BidInfo> selectByProductId(Integer pid);
+
+    /**
+     * 查找top3的数据
+     * @return
+     */
+    List<PhoneBidInfo> SelectInvestRankTop3();
 }

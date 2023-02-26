@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 统一返回类型
@@ -26,6 +27,10 @@ public class Result {
     /*集合数据*/
     @ApiModelProperty(value = "集合数据")
     private List list;
+
+    /*Map集合数据*/
+    @ApiModelProperty(value = "Map集合数据")
+    private Map map;
 
     /*储存token*/
     private String accessToken;
@@ -66,8 +71,17 @@ public class Result {
                 ", msg='" + msg + '\'' +
                 ", object=" + object +
                 ", list=" + list +
+                ", map=" + map +
                 ", accessToken='" + accessToken + '\'' +
                 '}';
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
 
     public Integer getCode() {

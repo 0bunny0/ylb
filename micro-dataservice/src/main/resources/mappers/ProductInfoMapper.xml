@@ -251,4 +251,9 @@
     order by id;
   </select>
 
+  <select id="selectTotalRowsByType" resultType="java.lang.Integer">
+    SELECT count(*) FROM b_product_info
+    where product_type = #{ltype}
+  </select>
+
 </mapper>

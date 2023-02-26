@@ -10,6 +10,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -97,4 +98,36 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 
         return productInfo;
     }
+
+    /**
+     * 计算总条数
+     *
+     * @param ltype
+     * @return
+     */
+    @Override
+    public int selectTotalRowsByType(Integer ltype) {
+        int totalRows = productInfoMapper.selectTotalRowsByType(ltype);
+        System.out.println(totalRows);
+        return totalRows;
+    }
+
+    /**
+     * 根据type 页码 页数 分页
+     *
+     * @param ltype
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public List<ProductInfo> queryAllByType(Integer ltype, Integer pageNo, Integer pageSize) {
+        int index = (pageNo - 1)*pageSize;
+
+        List<ProductInfo> productInfoList = productInfoMapper.selectPageByType(ltype, index, pageSize);
+
+        return productInfoList;
+    }
+
+
 }

@@ -10,4 +10,7 @@ import java.util.List;
  */
 public interface BidInfoService {
     List<PhoneBidInfo> queryBidByProductId(Integer pid, int pageNo, int pageSize);
+
+    /*查找top3的投资人集合*/
+    List<PhoneBidInfo> InvestRankTop3();
 }

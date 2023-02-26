@@ -17,6 +17,7 @@ public class PhoneBidInfo implements Serializable {
 
     private String showTime;    //显示在页面中的时间
 
+
     public Integer getId() {
         return id;
     }

@@ -32,4 +32,13 @@ public class BidInfoServiceImpl implements BidInfoService {
 
         return phoneBidInfos;
     }
+
+    @Override
+    public List<PhoneBidInfo> InvestRankTop3() {
+
+        List<PhoneBidInfo> phoneBidInfos= bidInfoMapper.SelectInvestRankTop3();;
+        /*查找top3的数据*/
+
+        return phoneBidInfos;
+    }
 }

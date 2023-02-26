@@ -26,14 +26,7 @@ public interface ProductInfoMapper {
     BigDecimal selectAvgRate();
 
 
-    /**
-     * 通过类型分页查询 商品信息
-     * @param type  类型
-     * @param index 索引下标
-     * @param rows  查询行数
-     * @return
-     */
-    List<ProductInfo> selectPageByType(int type, int index, int rows);
+
 
     /**
      * 使用排它锁通过产品id获取产品信息
@@ -74,5 +67,20 @@ public interface ProductInfoMapper {
      */
     int updateStatus(Integer id, Integer status);
 
+    /**
+     * 通过类型分页查询 商品信息
+     * @param type  类型
+     * @param index 索引下标
+     * @param rows  查询行数
+     * @return
+     */
+    List<ProductInfo> selectPageByType(int type, int index, int rows);
 
+
+    /**
+     * 筛选总条数
+     * @param ltype
+     * @return
+     */
+    int selectTotalRowsByType(Integer ltype);
 }

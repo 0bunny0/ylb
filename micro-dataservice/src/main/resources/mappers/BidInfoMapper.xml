@@ -129,4 +129,13 @@
     where prod_id =#{pid} and bid_status=1
     order by id
   </select>
+
+
+  <select id="SelectInvestRankTop3" resultMap="PhoneBidInfoMap">
+    select u.phone,sum(bid.bid_money)as bid_money from b_bid_info as bid
+    inner join u_user as u on bid.uid = u.id
+    group by uid
+    order by bid_money desc
+    limit 3
+  </select>
 </mapper>
